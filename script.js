@@ -12,7 +12,7 @@
 //  b) через switch-case
 //  c) через многомерный массив без ифов и switch.
 
-let lang = confirm('Вывести день недели на русском языке? Press "отмена" for English');
+let lang = confirm('Вывести все дени недели на русском языке? Press "отмена" for English');
 lang === true ? lang = 'ru' : lang = 'en';
 let daysRu = [
   'Воскресенье',
@@ -37,29 +37,39 @@ let matrixDays = [
   ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
   ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 ];
-let d = new Date();
-let n = d.getDay();
 
 if (lang === 'ru') {
-  console.log(daysRu[n]);
+  for (let day of daysRu) {
+    console.log(day);
+  }
 } else if (lang === 'en') {
-  console.log(daysEn[n]);
+  for (let day of daysEn) {
+    console.log(day);
+  }
 } else {
   console.log('Что-то пошло не так');
 }
 
 switch (lang) {
   case 'ru':
-    console.log(daysRu[n]);
+    for (let day of daysRu) {
+      console.log(day);
+    }
     break;
   case 'en':
-    console.log(daysEn[n]);
+    for (let day of daysEn) {
+      console.log(day);
+    }
     break;
   default:
     console.log('Что-то пошло не так');
 }
 
-lang === 'ru' ? console.log(matrixDays[0][n]) : console.log(matrixDays[1][n]);
+let daysRuOrEn;
+lang === 'ru' ? daysRuOrEn = matrixDays[0] : daysRuOrEn = matrixDays[1];
+for (let day of daysRuOrEn) {
+  console.log(day);
+}
 
 // ////////////////////////////////// second task /////////////////////////////////////////////////////
 
