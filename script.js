@@ -4,37 +4,116 @@
 
 'strict';
 
-let arr = [];
-let checkIfStartsWith2or4 = false;
+// Вывести на экран все дни недели
+// Каждый из них с новой строчки
+// Выходные дни - курсивом
+// Текущий день - жирным шрифтом(использовать объект даты)
 
-const getRandomSevenDigitNumber = function () {
-  return String(Math.floor(1000000 + Math.random() * 9000000));
-}
+let daysRu = [
+  'Воскресенье',
+  'Понедельник',
+  'Вторник',
+  'Среда',
+  'Четверг',
+  'Пятница',
+  'Суббота'
+];
 
-for (let i = 0; i < 7; i++) arr.unshift(getRandomSevenDigitNumber());
+let daysRuModified = [];
+let d = new Date();
+let n = d.getDay();
+let list = document.getElementById('mydiv');
+console.log(n)
+// daysRu.forEach((day) => {
+//   if ((day == 'Воскресенье') && (day == 'Суббота')) {
+//     alert('a');
+//     // let p = document.createElement('p');
+//     // p.innerText = day;
+//     // document.getElementById('mydiv').style.fontStyle = 'italic';
+//     // list.appendChild(p);
+//   } else {
+//     let p = document.createElement('p');
+//     p.innerText = day;
+//     list.appendChild(p);
+//   }
+// });
+let p;
+for (let day of daysRu) {
+  switch (day) {
+    // case :
 
-for (let i = 0; i < arr.length; i++) {
-  if ((Math.floor(arr[i] / 1000000) == 2) || (Math.floor(arr[i] / 1000000)) == 4) {
-    console.log(arr[i], typeof arr[i]);
-    checkIfStartsWith2or4 = true;
+    case 'Воскресенье':
+      p = document.createElement('p');
+      p.innerText = day;
+      document.getElementById('mydiv').style.fontStyle = 'italic';
+      list.appendChild(p);
+      break;
+    case 'Понедельник':
+      p = document.createElement('p');
+      p.innerText = day;
+      list.appendChild(p);
+      break;
+
+    case '2':
+      alert('Два');
+      break;
+
+    case 3:
+      alert('Никогда не выполнится!');
+      break;
+    default:
+      alert('Неизвестное значение');
   }
-}
 
-if (!checkIfStartsWith2or4) {
-  console.log(`В массиве ${arr} нет чисел, начинающихся на 2 или 4. Перезагрузите страницу.`)
-}
+//   if (day == 'Воскресенье') {
+//     let p = document.createElement('p');
+//     p.innerText = day;
+//     list.appendChild(p);
+//     document.getElementById('div').style.fontStyle = 'italic';
+//   } else if (day == 'Понедельник') {
+//     let p = document.createElement('p');
+//     p.innerText = day;
+//     list.appendChild(p);
+//   }
+// }
 
-const isPrime = function (number) {
-  if (number === 1) return false;
+// ['Бильбо', 'Гэндальф', 'Назгул'].forEach((item, index, array) => {
+//   let p = document.createElement('p');
+//   p.innerText = item;
+//   list.appendChild(p);
+//   document.getElementById('p').style.fontStyle = 'italic';
+// });
 
-  else if (number > 1) {
-    for (let i = 2; i < number; i++) {
-      if (number % i == 0) return false;
-    }
-    return true;
-  } else return false;
-}
+// for (let day of daysRu) {
+//   if ((day === 'Воскресенье') && (day === 'Воскресенье')) {
+//     alert('\__Воскресенье\__');
+//   }
+// }
 
-for (let i = 1; i < 100; i++) {
-  if (isPrime(i)) console.log(`${i} - простое число. Его делители 1 и ${i}`);
-}
+// daysRuModified = daysRu.join('\n');
+
+// // alert(daysRuModified);
+// console.log(daysRuModified, typeof daysRuModified);
+
+// document.getElementById('mydiv').innerHTML = ''
+// document.getElementById('mydiv').style.fontStyle = 'italic';
+// document.getElementById('mydiv').innerHTML = daysRu;
+// for (let day of daysRu) {
+//   alert(`${day}\n${day}\n`);
+// }
+
+// alert([daysRu]);
+// alert(daysRu[1]);
+
+// function italicsBody () {
+//   document.getElementById('mydiv').style.fontStyle = 'italic';
+// }
+// function populateNames () {
+//   let names = ['name1', 'name', 'name3']
+//   let nameList = document.getElementById('names');
+//   for (let key in names) {
+//     nameList.innerHTML = nameList.innerHTML + ' <li> ' + names[key] + '</li>';
+//   }
+// }
+// populateNames()
+// italicsBody()
