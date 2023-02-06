@@ -10,6 +10,16 @@
 // Текущий день - жирным шрифтом(использовать объект даты)
 
 let daysRu = [
+  'Понедельник',
+  'Вторник',
+  'Среда',
+  'Четверг',
+  'Пятница',
+  'Суббота',
+  'Воскресенье'
+];
+
+let daysEn = [
   'Воскресенье',
   'Понедельник',
   'Вторник',
@@ -19,14 +29,21 @@ let daysRu = [
   'Суббота'
 ];
 
-let daysRuModified = [];
 let d = new Date();
 let n = d.getDay();
 let list = document.getElementById('out');
 let p;
+let currentDay = daysEn[n];
 
 for (let day of daysRu) {
   switch (day) {
+    case currentDay:
+      p = document.createElement('p');
+      p.innerText = day;
+      p.style.fontWeight = 'bold';
+      list.appendChild(p);
+      break;
+
     case 'Воскресенье':
       p = document.createElement('p');
       p.innerText = day;
