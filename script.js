@@ -4,64 +4,19 @@
 
 'strict';
 
-// Вывести на экран все дни недели
-// Каждый из них с новой строчки
-// Выходные дни - курсивом
-// Текущий день - жирным шрифтом(использовать объект даты)
+const week = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
 
-let daysRu = [
-  'Понедельник',
-  'Вторник',
-  'Среда',
-  'Четверг',
-  'Пятница',
-  'Суббота',
-  'Воскресенье'
-];
+const day = new Date();
+let numWeekDay = day.getDay();
+if (numWeekDay === 0) { numWeekDay = 6; } else { numWeekDay--; }
 
-let daysEn = [
-  'Воскресенье',
-  'Понедельник',
-  'Вторник',
-  'Среда',
-  'Четверг',
-  'Пятница',
-  'Суббота'
-];
-
-let d = new Date();
-let n = d.getDay();
-let list = document.getElementById('out');
-let p;
-let currentDay = daysEn[n];
-
-for (let day of daysRu) {
-  switch (day) {
-    case currentDay:
-      p = document.createElement('p');
-      p.innerText = day;
-      p.style.fontWeight = 'bold';
-      list.appendChild(p);
-      break;
-
-    case 'Воскресенье':
-      p = document.createElement('p');
-      p.innerText = day;
-      p.style.fontStyle = 'italic';
-      list.appendChild(p);
-      break;
-
-    case 'Суббота':
-      p = document.createElement('p');
-      p.innerText = day;
-      p.style.fontStyle = 'italic';
-      list.appendChild(p);
-      break;
-
-    default:
-      p = document.createElement('p');
-      p.innerText = day;
-      list.appendChild(p);
-      break;
+week.forEach((day, i) => {
+  let str = day;
+  if (i === numWeekDay) {
+    str = `<b>${day}</b>`;
+  } else {
+    str = `${day}`;
   }
-}
+  if (i === 5 || i === 6) { str = `<i>${str}</i>`; }
+  document.body.insertAdjacentHTML('beforeend', `<div>${str}</div>`);
+});
