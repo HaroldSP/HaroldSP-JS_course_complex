@@ -1,17 +1,19 @@
-const btn = document.getElementById('btn')
+/* eslint-disable prefer-const */
+/* eslint-disable semi */
+/* eslint-disable no-unused-vars */
+'use strict';
 
-const logger = function () {
-  alert('click!')
-}
+// 1) Повесить на кнопку обработчик события click и реализовать такой функционал:
 
-btn.addEventListener('click', logger)
+// В input[type=text] можно ввести цвет: red, green, blue и так далее.
+// По нажатию на кнопку необходимо брать этот цвет и добавлять его свойству style="backgroundColor: " квадрата
 
-btn.addEventListener('click', function () {
-  alert('click!!')
-})
+// Работать должно так: ввели в input[type=text] yellow, по нажатию на кнопку значение input[type=text] попадает в свойство style="backgroundColor: yellow"
+// и фон квадрата должен поменяться
 
-btn.removeEventListener('click', function () {
-  alert('click!!!')
-})
+// 2) В кружке (который внутри квадрата) есть кнопка. Дать ей свойство style="display: none; "
 
-console.dir(btn)
+// 3) Повесить на input[type=range] обработчик события input и реализовать такой функционал:
+
+// при каждом изменении положения ползунка значение input[type=range] необходимо заносить в свойства ширины и высоты кружка
+// (который внутри квадрата) (height и width) (в процентах!!)
