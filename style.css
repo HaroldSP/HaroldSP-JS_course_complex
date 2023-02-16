@@ -1,8 +1,6 @@
-input{
-  display: block;
-  margin: 10px 0;
+#city{
+  display: none;
 }
-
-.green {
-    background-color: green !important;
+.result{
+  margin: 15px 0;
 }
