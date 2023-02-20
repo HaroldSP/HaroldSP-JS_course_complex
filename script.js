@@ -56,3 +56,5 @@ const getCircleSize = function (e) {
 
 range.addEventListener('input', getSpanValues)
 range.addEventListener('input', getCircleSize)
+
+// testing a branch copying
