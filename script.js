@@ -9,55 +9,56 @@ const cityArr = {
   uk: ['Киев', 'Харьков', 'Одесса', 'Днепр', 'Донецк', 'Запорожье', 'Львов'],
   bel: ['Минск', 'Гомель', 'Могилёв', 'Витебск', 'Гродно', 'Брест'],
   jap: ['Токио', 'Киото', 'Осака', 'Иокогама']
-};
+}
 
-const countrySelect = document.getElementById('country');
-const citySelect = document.getElementById('city');
+const countrySelect = document.getElementById('country')
+const citySelect = document.getElementById('city')
 
-let targetArray = [];
-let selectedCountry = '';
-let selectedOnce = false;
+let targetArray = []
+let selectedCountry = ''
+let selectedOnce = false
 
 countrySelect.addEventListener('change', function () {
-  let option;
+  let option
 
   citySelect.style = 'display:block; position:absolute; top:8px; left:100px;'
 
   if (selectedOnce) {
-    citySelect.innerHTML = '';
+    citySelect.innerHTML = ''
   };
 
   switch (this.value) {
     case 'rus':
       targetArray = cityArr.rus
-      break;
+      break
     case 'uk':
       targetArray = cityArr.uk
-      break;
+      break
     case 'bel':
       targetArray = cityArr.bel
-      break;
+      break
     case 'jap':
       targetArray = cityArr.jap
-      break;
+      break
   };
 
-  selectedCountry = document.querySelector(`#country > option[value="${this.value}"]`).innerHTML;
+  selectedCountry = document.querySelector(`#country > option[value="${this.value}"]`).innerHTML
 
   for (let i = 0; i < targetArray.length; i++) {
-    option = document.createElement('option');
-    option.value = targetArray[i];
-    option.text = targetArray[i];
-    citySelect.appendChild(option);
-    selectedOnce = true;
+    option = document.createElement('option')
+    option.value = targetArray[i]
+    option.text = targetArray[i]
+    citySelect.appendChild(option)
+    selectedOnce = true
   };
-});
+})
 
 // ////////////////////////////////////////////////////////////////////////////////////////////
 
 citySelect.addEventListener('change', function () {
-  let result = document.querySelector('.result');
-  let resultText = `${selectedCountry} ${this.value}`;
+  const result = document.querySelector('.result')
+  const resultText = `${selectedCountry} ${this.value}`
 
-  result.innerText = resultText;
-});
+  result.innerText = resultText
+})
+// test
