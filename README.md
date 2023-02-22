@@ -1,1 +1,1 @@
-# JS_course_11_lesson
+# JS_course_mixed complex extra tasks
