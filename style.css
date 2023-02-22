@@ -1,6 +1,6 @@
-#city{
-  display: none;
+body{
+  font-family: Arial sans-serif;
 }
-.result{
-  margin: 15px 0;
+ul{
+  list-style-type: none
 }

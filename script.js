@@ -4,31 +4,57 @@
 
 'use strict'
 
-// Создайте отдельную HTML страницу с полем ввода (тэг input) и пустым параграфом (тэг p)
-
-// Стилизация на ваше усмотрение.
-
-// Введённый в поле текст должен отображаться внутри параграфа, но с задержкой в 300мс.
-
-// При этом каждый введённый пользователем в поле символ сбрасывает предыдущий отложенный вызов и запускает новый.
-
-// Таким образом программа должна ожидать завершения ввода пользователя и только после этого изменять текст в параграфе (тэг p)
-
-const input = document.getElementById('input');
-const output = document.getElementById('result');
-
-const debounce = (func, wait) => {
-  let timeoutId;
-  return function (...args) {
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => func(...args), wait); // вызывается оригинальная функция (ту, которую передали в аргумент)
-  };
+let print1 = function () {
+  console.log('Крот');
+}
+let print2 = function () {
+  console.log('овце,');
+}
+let print3 = function () {
+  console.log('жирафу,');
+}
+let print4 = function () {
+  console.log('зайке');
+}
+let print5 = function () {
+  console.log('голубые');
+}
+let print6 = function () {
+  console.log('сшил');
+}
+let print7 = function () {
+  console.log('фуфайки');
 }
 
-const showResult = (event) => {
-  output.innerHTML = event.target.value;
+let func1 = function () {
+  // ...
+};
+
+let func2 = function () {
+  func1();
+
+  setTimeout(function () {
+    // ...
+  }, 1000);
 }
 
-const debouncedShowResult = debounce(showResult, 300);
+let func3 = function () {
+  setTimeout(function () {
+    func2();
+    // ...
+  }, 250);
 
-input.addEventListener('input', debouncedShowResult);
+  // ...
+}
+
+setTimeout(function () {
+  // ...
+
+  setTimeout(function () {
+    // ...
+  }, 750);
+}, 500);
+
+// ...
+
+func3();
