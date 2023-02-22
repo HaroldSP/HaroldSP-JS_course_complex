@@ -1,64 +1,15 @@
+/* eslint-disable prefer-const */
+/* eslint-disable semi */
+/* eslint-disable no-unused-vars */
+
 'use strict'
 
-// 1) Повесить на кнопку обработчик события click и реализовать такой функционал:
+// Создайте отдельную HTML страницу с полем ввода (тэг input) и пустым параграфом (тэг p)
 
-// choose country then city then result
+// Стилизация на ваше усмотрение.
 
-const cityArr = {
-  rus: ['Москва', 'Санк-Петербург', 'Новосибирск', 'Екатеринбург', 'Нижний Новгород', 'Казань', 'Челябинск'],
-  uk: ['Киев', 'Харьков', 'Одесса', 'Днепр', 'Донецк', 'Запорожье', 'Львов'],
-  bel: ['Минск', 'Гомель', 'Могилёв', 'Витебск', 'Гродно', 'Брест'],
-  jap: ['Токио', 'Киото', 'Осака', 'Иокогама']
-}
+// Введённый в поле текст должен отображаться внутри параграфа, но с задержкой в 300мс.
 
-const countrySelect = document.getElementById('country')
-const citySelect = document.getElementById('city')
+// При этом каждый введённый пользователем в поле символ сбрасывает предыдущий отложенный вызов и запускает новый.
 
-let targetArray = []
-let selectedCountry = ''
-let selectedOnce = false
-
-countrySelect.addEventListener('change', function () {
-  let option
-
-  citySelect.style = 'display:block; position:absolute; top:8px; left:100px;'
-
-  if (selectedOnce) {
-    citySelect.innerHTML = ''
-  };
-
-  switch (this.value) {
-    case 'rus':
-      targetArray = cityArr.rus
-      break
-    case 'uk':
-      targetArray = cityArr.uk
-      break
-    case 'bel':
-      targetArray = cityArr.bel
-      break
-    case 'jap':
-      targetArray = cityArr.jap
-      break
-  };
-
-  selectedCountry = document.querySelector(`#country > option[value="${this.value}"]`).innerHTML
-
-  for (let i = 0; i < targetArray.length; i++) {
-    option = document.createElement('option')
-    option.value = targetArray[i]
-    option.text = targetArray[i]
-    citySelect.appendChild(option)
-    selectedOnce = true
-  };
-})
-
-// ////////////////////////////////////////////////////////////////////////////////////////////
-
-citySelect.addEventListener('change', function () {
-  const result = document.querySelector('.result')
-  const resultText = `${selectedCountry} ${this.value}`
-
-  result.innerText = resultText
-})
-// test
+// Таким образом программа должна ожидать завершения ввода пользователя и только после этого изменять текст в параграфе (тэг p)
