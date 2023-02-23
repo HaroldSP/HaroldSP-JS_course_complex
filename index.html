@@ -4,11 +4,47 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
     <script src="./script.js" defer></script>
+    <style>
+      #santa {
+        position: absolute;
+        top: 0px;
+        left: 0;
+      }
+
+      #gift {
+        position: absolute;
+        top: 180px;
+        left: 0px;
+      }
+      #toggle-button {
+        position: absolute;
+        top: 400px;
+        left: 600px;
+        background-color: red;
+      }
+      #reset-button {
+        position: absolute;
+        top: 450px;
+        left: 600px;
+        background-color: greenyellow;
+      }
+    </style>
     <title>Document</title>
   </head>
   <body>
-    <!-- <div><img src="./menu.svg" alt="" /><br /></div> -->
+    <div id="santa">
+      <img src="./images/santa-reindeer.jpg" alt="" />
+    </div>
+    <div id="gift">
+      <img src="./images/parachute-parachuting-gift.jpg" alt="" />
+    </div>
+    <button id="toggle-button">Start</button>
+    <button id="reset-button">Reset</button>
   </body>
 </html>
+
+<!-- <div id="santa"><img src="./images/santa-reindeer" alt="" /></div>
+    <div id="gift">
+      <img src="./images/parachute-parachuting-gift.jpg" alt="" />
+    </div> -->
