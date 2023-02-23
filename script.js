@@ -33,6 +33,10 @@ resetButton.addEventListener('click', function () {
   cancelAnimationFrame(idInterval);
   gift.style.top = 180 + 'px';
   santa.style.left = 0 + 'px';
+  resetButton.classList.add('clicked');
+  setTimeout(() => {
+    resetButton.classList.remove('clicked');
+  }, 150);
 });
 
 const flyAnimate = () => {
