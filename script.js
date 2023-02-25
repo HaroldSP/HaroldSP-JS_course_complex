@@ -3,52 +3,24 @@
 /* eslint-disable no-unused-vars */
 
 'use strict'
-// Написать любую анимацию, используя requestAnimationFrame и кнопку, активирующую её
 
-// Кнопка должна ставить анимацию на паузу и продолжать анимацию после повторного нажатия на нее.
-// Добавить кнопку reset, которая будет возвращать анимацию в первоначальное состояние.
+/*
 
-let santa = document.getElementById('santa');
-let gift = document.getElementById('gift');
+1.Написать скрипт, которые заменяет слово "функция" и его однокоренные слова в div с id=task1 на «<strong>функция</strong>».
 
-let count = 0;
-let idInterval;
+2. Написать скрипт который в div с id=task2 найдет время. Время имеет формат часы:минуты. И часы, и минуты состоят из двух цифр, пример: 09:00.
+заключить найденное время в тег <b></b>
 
-const button = document.getElementById('toggle-button');
+3. Создать запрос во всем документе найти текст в кавычках и заключить его в теги <mark></mark>
 
-button.addEventListener('click', function () {
-  if (button.textContent === 'Start') {
-    button.textContent = 'Pause';
-    flyAnimate();
-  } else {
-    button.textContent = 'Start';
-    cancelAnimationFrame(idInterval);
-  }
-});
+4. Замените в документе домены вида http://site.ru на <a href="http://site.ru">site.ru</a>,
 
-const resetButton = document.getElementById('reset-button');
+5. Напишите регулярное выражение для поиска цвета, заданного как #ABCDEF, вывести цвет в консоль
 
-resetButton.addEventListener('click', function () {
-  count = 0;
-  cancelAnimationFrame(idInterval);
-  gift.style.top = 180 + 'px';
-  santa.style.left = 0 + 'px';
-  resetButton.classList.add('clicked');
-  setTimeout(() => {
-    resetButton.classList.remove('clicked');
-  }, 150);
-});
+6. Ссылки такого вида http://site.ru/aaaa/bbbb.html заменить
+на <a href="http://site.ru/aaaa/bbbb.html">site.ru</a>
 
-const flyAnimate = () => {
-  count++;
-  idInterval = requestAnimationFrame(flyAnimate);
+Попрактикуйтесь на кроссвордах https://regexcrossword.com/
+и на задачках https://habr.com/ru/post/167015/
 
-  if (count < 150) {
-    gift.style.top = (180 + count * 2) + 'px';
-    santa.style.left = count * 3 + 'px';
-  } else if (count < 350) {
-    santa.style.left = count * 3 + 'px';
-  } else {
-    cancelAnimationFrame(idInterval)
-  }
-};
+*/
