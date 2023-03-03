@@ -26,17 +26,36 @@ https://jsonplaceholder.typicode.com/posts
 
 */
 
+// uncomment to use a fetch method:
+// const sendData = (url, data) => {
+//   fetch(url, {
+//     method: 'POST',
+//     body: JSON.stringify(data),
+//     headers: { 'Content-type': 'application/json; charset=UTF-8' }
+//   })
+//     .then(response => response.json())
+//     .then(data => {
+//       console.log(data)
+//     })
+// };
+
+// comment out to use fetch method above /////////
 const sendData = (url, data) => {
-  fetch(url, {
-    method: 'POST',
-    body: JSON.stringify(data),
-    headers: { 'Content-type': 'application/json; charset=UTF-8' }
-  })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data)
-    })
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', url);
+  xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+  xhr.onreadystatechange = () => {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 201) {
+        console.log(xhr.responseText);
+      } else {
+        console.log('Error:', xhr.status);
+      }
+    }
+  };
+  xhr.send(JSON.stringify(data));
 };
+// ////////////////////////////////////////////////
 
 const getData = (source = 'db.json') => {
   return fetch(source)
