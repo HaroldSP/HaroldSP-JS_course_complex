@@ -14,19 +14,16 @@
 
 */
 
-// Шаблон получения данныых из json файла lesson28_cars.json
-/*
-let dataRecievied;
+const select = document.getElementById('my-select');
+const result = document.getElementById('result');
 
-const getData = (source = 'dbHeroes.json') => {
+const getData = (source = 'lesson28_cars.json') => {
   return fetch(source)
     .then(response => {
       if (!response.ok) { console.log('data not loaded'); return }
       return response.json();
     })
     .then(data => {
-      // console.log(data);
-      // other data manipulations
       return data;
     })
     .catch(error => console.error('An error occurred:', error));
@@ -34,18 +31,23 @@ const getData = (source = 'dbHeroes.json') => {
 
 getData()
   .then(data => {
-    // console.log(data, typeof data);
-    let allKeysArr = [];
+    const carsList = data.cars;
+    let firstCarObject = carsList[0];
+    let secondCarObject = carsList[1];
 
-    for (const obj of data) {
-      // console.log(obj);
-      for (const key in obj) {
-        // const value = obj[key];
-        // console.log(key, typeof key);
+    const showDiv = function () {
+      let selectedOption = select.options[select.selectedIndex].value;
 
-        if (!allKeysArr.includes(key)) allKeysArr.push(key);
+      if (selectedOption === '') {
+        result.innerHTML = 'Выберите тачку';
+      } else if (selectedOption === 'bmw') {
+        result.innerHTML = `Тачка: ${firstCarObject.brand} ${firstCarObject.model} <br> 
+        Цена: ${firstCarObject.price} $`;
+      } else if (selectedOption === 'volvo') {
+        result.innerHTML = `Тачка: ${secondCarObject.brand} ${secondCarObject.model} <br> 
+        Цена: ${secondCarObject.price} $`;
       }
-    }
-    console.log(allKeysArr, typeof data);
+    };
+
+    select.addEventListener('change', showDiv);
   });
-*/
