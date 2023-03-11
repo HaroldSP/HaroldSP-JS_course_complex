@@ -18,10 +18,6 @@
 6) Дизайн и исполнение на ваше усмотрение, главное чтобы пользователь мог в поле ввода ввести текст, нажать кнопку и получить перевод своего текста
 */
 
-// Функция фильтрации значения по типу данных, принимает type и сколь угодно values
-// Typeof comparisons should be to string literals
-// const filterByType = (type, ...values) => values.filter(value => typeof value === type)
-
 // Функция скрытия всех блоков ответов (reset)
 const hideAllResponseBlocks = () => {
   const responseBlocksArray = Array.from(document.querySelectorAll('div.dialog__response-block'))
@@ -46,32 +42,43 @@ const showResults = msgText => showResponseBlock('.dialog__response-block_ok', m
 // Функция показа блока с сообщением об отсутствии результатов
 const showNoResults = () => showResponseBlock('.dialog__response-block_no-results')
 
-// Функция, пытающаяся применить фильтрацию к значению, принимает тип и значения для фильтрации
-// const tryFilterByType = (type, values) => {
-//   try {
-//     // Создаем строку с командой filterByType и значениями, и передаем ее в eval()
-//     // Применять eval() не рекомендуется из-за проблем с безопасностью.
-//     const valuesArray = eval(`filterByType('${type}', ${values})`).join(', ')
-//     // Создаем сообщение в зависимости от длины массива значений, тернарный оператор
-//     const alertMsg = (valuesArray.length)
-//       ? `Данные с типом ${type}: ${valuesArray}`
-//       : `Отсутствуют данные типа ${type}`
-//     // Отображаем сообщение в блоке "Ok"
-//     showResults(alertMsg)
-//   } catch (e) {
-//     // Отображаем сообщение об ошибке
-//     showError(`Ошибка: ${e}`)
-//   }
-// }
+const showResultMain = (type1, type2, values) => {
+  try {
+    let myHeaders = new Headers();
+    myHeaders.append('apikey', 'Tv3T2mrEWyGoyJ6LMFpBlEMNNU8ivK7R');
 
-// Получение элемента кнопки фильтрации
+    let requestOptions = {
+      method: 'GET',
+      redirect: 'follow',
+      headers: myHeaders
+    };
+
+    fetch(`https://api.apilayer.com/exchangerates_data/convert?to=${type2}&from=${type1}&amount=${values}`, requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        console.log(result.result);
+        let resultWithCurrency = result.result + type2;
+        showResults(resultWithCurrency);
+        filterButton.textContent = 'Конвертировать';
+      })
+      .catch(error => console.log('error', error));
+  } catch (e) {
+    // Отображаем сообщение об ошибке
+    showError(`Ошибка: ${e}`)
+  }
+}
+
+// Получение элемента кнопки
 const filterButton = document.querySelector('#filter-btn')
 
-// Обработка события клика на кнопке фильтрации
+// Обработка события клика
 filterButton.addEventListener('click', e => {
   // Получаем доступ к элементам ввода
-  const typeInput = document.querySelector('#type')
+  const typeInput1 = document.querySelector('#type1')
+  const typeInput2 = document.querySelector('#type2')
   const dataInput = document.querySelector('#data')
+
+  filterButton.textContent = 'Ожидайте...';
 
   // Проверяем, не пустое ли поле ввода
   if (dataInput.value === '') {
@@ -79,9 +86,8 @@ filterButton.addEventListener('click', e => {
     dataInput.setCustomValidity('Поле не должно быть пустым!')
     showNoResults()
   } else {
-    // Очищаем свою валидацию, предотвращаем действие по умолчанию и вызываем функцию фильтрации по типу
     dataInput.setCustomValidity('')
     e.preventDefault()
-    tryFilterByType(typeInput.value.trim(), dataInput.value.trim())
+    showResultMain(typeInput1.value.trim(), typeInput2.value.trim(), dataInput.value.trim())
   }
 })
