@@ -6,13 +6,21 @@
 'strict';
 
 /*
-1) По ссылке, копировать себе проект!
-2) Прокомментировать каждую строчку кода (что именно происходит в строке)
+1) В отдельном репозитории реализовать приложение конвертер валют
+2) С помощью API - https://exchangeratesapi.io/ получить стоимость доллара и евро (не обязательно использовать этот api , есть и другие)
+
+3) На странице должен быть select или radio кнопки с выбором валюты USD или EUR
+
+4) Добавьте на страницу input, вводим количество валюты и получаем количество рублей
+
+5) Так же возможность конвертировать обратно из рублей в валюту
+
+6) Дизайн и исполнение на ваше усмотрение, главное чтобы пользователь мог в поле ввода ввести текст, нажать кнопку и получить перевод своего текста
 */
 
 // Функция фильтрации значения по типу данных, принимает type и сколь угодно values
 // Typeof comparisons should be to string literals
-const filterByType = (type, ...values) => values.filter(value => typeof value === type)
+// const filterByType = (type, ...values) => values.filter(value => typeof value === type)
 
 // Функция скрытия всех блоков ответов (reset)
 const hideAllResponseBlocks = () => {
@@ -39,22 +47,22 @@ const showResults = msgText => showResponseBlock('.dialog__response-block_ok', m
 const showNoResults = () => showResponseBlock('.dialog__response-block_no-results')
 
 // Функция, пытающаяся применить фильтрацию к значению, принимает тип и значения для фильтрации
-const tryFilterByType = (type, values) => {
-  try {
-    // Создаем строку с командой filterByType и значениями, и передаем ее в eval()
-    // Применять eval() не рекомендуется из-за проблем с безопасностью.
-    const valuesArray = eval(`filterByType('${type}', ${values})`).join(', ')
-    // Создаем сообщение в зависимости от длины массива значений, тернарный оператор
-    const alertMsg = (valuesArray.length)
-      ? `Данные с типом ${type}: ${valuesArray}`
-      : `Отсутствуют данные типа ${type}`
-    // Отображаем сообщение в блоке "Ok"
-    showResults(alertMsg)
-  } catch (e) {
-    // Отображаем сообщение об ошибке
-    showError(`Ошибка: ${e}`)
-  }
-}
+// const tryFilterByType = (type, values) => {
+//   try {
+//     // Создаем строку с командой filterByType и значениями, и передаем ее в eval()
+//     // Применять eval() не рекомендуется из-за проблем с безопасностью.
+//     const valuesArray = eval(`filterByType('${type}', ${values})`).join(', ')
+//     // Создаем сообщение в зависимости от длины массива значений, тернарный оператор
+//     const alertMsg = (valuesArray.length)
+//       ? `Данные с типом ${type}: ${valuesArray}`
+//       : `Отсутствуют данные типа ${type}`
+//     // Отображаем сообщение в блоке "Ok"
+//     showResults(alertMsg)
+//   } catch (e) {
+//     // Отображаем сообщение об ошибке
+//     showError(`Ошибка: ${e}`)
+//   }
+// }
 
 // Получение элемента кнопки фильтрации
 const filterButton = document.querySelector('#filter-btn')
